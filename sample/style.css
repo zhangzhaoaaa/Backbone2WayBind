@@ -1,0 +1,12 @@
+*{
+    margin:0;
+    padding:0;
+}
+div,p{
+    margin: 5px;
+}
+
+#notification{
+    margin:10px auto;
+    width: 980px;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery.js"></script>
+    <script src="underscore.js"></script>
+    <script src="backbone.js"></script>
+    <script src="backbone.epoxy.js"></script>
+</head>
+<body>
+<div id="app-computed">
+    <label>First:</label>
+    <input type="text" data-bind="value:firstName,events:['keyup']">
+
+    <label>Last:</label>
+    <input type="text" data-bind="value:lastName,events:['keyup']">
+
+    <b>Full Name:</b>
+    <span data-bind="text:fullName"></span>
+</div>
+<script>
+    var BindingModel = Backbone.Epoxy.Model.extend({
+        defaults: {
+            firstName: "Obi-Wan",
+            lastName: "Kenobi"
+        },
+        computeds: {
+            fullName: function() {
+                return this.get("firstName") +" "+ this.get("lastName");
+            }
+        }
+    });
+
+    var view = new Backbone.Epoxy.View({
+        el: "#app-computed",
+        model: new BindingModel()
+    });
+</script>
+</body>
+</html>

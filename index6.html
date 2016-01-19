@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery.js"></script>
+    <script src="underscore.js"></script>
+    <script src="backbone.js"></script>
+    <script src="backbone.epoxy.js"></script>
+</head>
+<body>
+<div id="my-view">
+    <div data-bind="template:$model">
+        <script id="item-template" type="text/tmpl">
+        <label>First:</label>
+        <input type="text" class="first-name">
+
+        <label>Last:</label>
+        <input type="text" class="last-name">
+
+        <b>Full Name:</b>
+        <span class="first-name"></span>
+        <span class="last-name"></span>
+        <p></p>
+        <%= firstName %> <%= lastName %>
+        <span class="fullNameParams"></span>
+        <span class="fullNameGetter"></span>
+        </script>
+    </div>
+</div>
+<script>
+    var ComputedModel = Backbone.Epoxy.Model.extend({
+        defaults: {
+            firstName: "Luke",
+            lastName: "Skywalker"
+        },
+        computeds: {
+            fullNameParams: {
+                deps: ["firstName", "lastName"],
+                get: function( firstName, lastName ) {
+                    return firstName +" "+ lastName;
+                },
+                set: function( value ) {
+                    var first = value.split(" ")[0];
+                    var last = value.split(" ")[1];
+                    return {firstName: first, lastName: last};
+                }
+            },
+            fullNameGetter: function() {
+                return this.get("firstName") +" - "+ this.get("lastName");
+            }
+        }
+    });
+    var MyView = Backbone.Epoxy.View.extend({
+        el: $("#my-view"),
+        model: new ComputedModel(),
+        bindings: {
+         "input.first-name": "value:firstName,events:['keyup']",
+         "input.last-name": "value:lastName,events:['keyup']",
+         "span.first-name": "text:firstName",
+         "span.last-name": "text:lastName",
+         "span.fullNameParams":"text:fullNameParams",
+         "span.fullNameGetter":"text:fullNameGetter"
+         },
+        template: _.template($('#item-template').html()),
+       /* bindings: "data-bind",*/
+        initialize:function(){
+            this.$el.html( this.template(this.model.toJSON({computed:true})) );
+        }
+    });
+    new MyView();
+</script>
+</body>
+</html>

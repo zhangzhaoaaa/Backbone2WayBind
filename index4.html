@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery.js"></script>
+    <script src="underscore.js"></script>
+    <script src="backbone.js"></script>
+    <script src="backbone.epoxy.js"></script>
+</head>
+<body>
+<div id="my-view">
+    <div data-bind="template:$model">
+        <script id="item-template" type="text/tmpl">
+        <label>First:</label>
+        <input type="text" data-bind="value:firstName,events:['keyup']">
+
+        <label>Last:</label>
+        <input type="text" data-bind="value:lastName,events:['keyup']">
+
+        <b>Full Name:</b>
+        <span data-bind="text:firstName"></span>
+        <span data-bind="text:lastName"></span>
+        <p></p>
+        <%= firstName %> <%= lastName %>
+        <%_.each(list,function(element, index, list){%>
+        <%=element%>
+        <%})%>
+        </script>
+        <!--<template><%= firstName %> <%= lastName %></template>-->
+    </div>
+</div>
+<script>
+    var MyView = Backbone.Epoxy.View.extend({
+        el: $("#my-view"),
+        model: new Backbone.Model({
+            firstName: "Luke",
+            lastName: "Skywalker",
+            isActive: false,
+            list:['mike','mandy','zero']
+        }),
+        template: _.template($('#item-template').html()),
+        bindings: "data-bind",
+        initialize:function(){
+            this.$el.html( this.template(this.model.toJSON()) );
+        }
+    });
+    new MyView();
+</script>
+</body>
+</html>
