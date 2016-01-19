@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../resouces/css/style.css"/>
+    <script src="../resouces/javascripts/jquery.js"></script>
+    <script src="../resouces/javascripts/underscore.js"></script>
+    <script src="../resouces/javascripts/backbone.js"></script>
+    <script src="../resouces/javascripts/backbone.epoxy.js"></script>
+    <script src="../model/Notification.js"></script>
+    <script src="../model/Message.js"></script>
+    <script src="../model/Publish.js"></script>
+    <script src="../model/Nixle.js"></script>
+    <script src="../manage/ModelManage.js"></script>
+    <script src="../resouces/javascripts/jsrender.js"></script>
+</head>
+<body>
+
+<div id="notification">
+    <h2>Time is coming<p class="noti_title"></p></h2>
+    <div id="message">
+        <div data-bind="template:$model">
+            <script id="theTmpl" type="text/x-jsrender">
+                <input type="text" class="messageTitle"/>
+                <input type="text" class="messageBody"/>
+            </script>
+        </div>
+        <p class="messageEmail"></p>
+    </div>
+    <div id="publish">
+        <input type="checkbox" name="publish" value="nixle"/>Nixle
+        <input type="checkbox" name="publish" value="ipaws"/>IPAWS
+        <input type="checkbox" name="publish" value="network"/>Network
+        <p class="publishCheckbox"></p>
+        <p class="publishMessage"></p>
+        <div id="nixle">
+            <input type="text" class="nixleTitle"/>
+            <input type="text" class="nixleMessage"/>
+            <input type="text" type="checkbox" class="nixleCheck"/>A
+            <input type="text" type="checkbox" class="nixleCheck"/>B
+            <p class="nixleCheckbox"></p>
+            <p class="nixleSms"></p>
+        </div>
+    </div>
+</div>
+<script src="../manage/ViewManage.js"></script>
+<script src="../view/NotificationView.js"></script>
+<script src="../view/MessageView.js"></script>
+<script src="../view/PublishView.js"></script>
+<script src="../view/NixleView.js"></script>
+<script src="../entry/notification/NotificationInitView.js"></script>
+</body>
+</html>
