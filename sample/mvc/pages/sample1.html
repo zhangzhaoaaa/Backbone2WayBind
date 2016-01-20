@@ -29,16 +29,17 @@
         <p class="messageEmail"></p>
     </div>
     <div id="publish">
-        <input type="checkbox" name="publish" value="nixle"/>Nixle
-        <input type="checkbox" name="publish" value="ipaws"/>IPAWS
-        <input type="checkbox" name="publish" value="network"/>Network
-        <p class="publishCheckbox"></p>
-        <p class="publishMessage"></p>
+        <input type="checkbox"  value="nixle" data-bind="checked:publish"/>Nixle
+        <input type="checkbox"  value="ipaws" data-bind="checked:publish"/>IPAWS
+        <input type="checkbox"  value="network" data-bind="checked:publish"/>Network
+        <p class="publishCheckbox" data-bind="listing:publish"></p>
+        <p class="publishMessage" data-bind="text:publishMessage"></p>
+        <p class="nixleMessage"></p>
         <div id="nixle">
             <input type="text" class="nixleTitle"/>
             <input type="text" class="nixleMessage"/>
-            <input type="text" type="checkbox" class="nixleCheck"/>A
-            <input type="text" type="checkbox" class="nixleCheck"/>B
+            <input type="text" type="checkbox" name="nixle" class="nixleCheck"/>A
+            <input type="text" type="checkbox" name="nixle" class="nixleCheck"/>B
             <p class="nixleCheckbox"></p>
             <p class="nixleSms"></p>
         </div>

@@ -6,7 +6,7 @@ var NixleModel = Backbone.Epoxy.Model.extend({
     defaults: {
         nixleId:'mess_12345_self',
         nixleTitle:'mess_title_self',
-        nixleMessage:'',
+        nixleMessage:'nixleMessage',
         nixleCheck:[]
     },
     parse:function(data){

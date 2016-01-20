@@ -4,12 +4,17 @@
 var PublView = Backbone.Epoxy.View.extend({
     el: $("#publish"),
     model:SkyModel.CreateModel(SkyModel.GetModel("notification").get("publish"),PublishModel),
-    bindings: {
-        "input[type=checkbox]":"value:publish,events:['keyup']",
-        "p.publishCheckbox":"text:publish",
-        "p.publishMessage":"text:publishMessage"
+    bindingHandlers: {
+        listing: function( $element, value ) {
+            $element.text( value.join(", ") );
+        }
     },
     initialize:function(){
         SkyView.setView(this.cid,new NixlView());
+        this.listenTo(SkyModel.GetModel("nixle"),"change",this.listenNixle);
+    },
+    listenNixle:function(model){
+        console.log(model.toJSON());
+        this.model.set("nixle",model.toJSON());
     }
 });
