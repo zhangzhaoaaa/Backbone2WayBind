@@ -3,7 +3,7 @@
  */
 var NotiView = Backbone.Epoxy.View.extend({
     el: $("#notification"),
-    model: SkyModel.CreateModel(null,NotificationModel),
+    model: SkyModel.createModel(null,NotificationModel),
     bindings: {
         "p.noti_title":"text:notificationTitle"
     },

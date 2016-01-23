@@ -3,18 +3,30 @@
  */
 var PublView = Backbone.Epoxy.View.extend({
     el: $("#publish"),
-    model:SkyModel.CreateModel(SkyModel.GetModel("notification").get("publish"),PublishModel),
+    model:SkyModel.createModel(SkyModel.getModel("notification").get("publish"),PublishModel),
     bindingHandlers: {
         listing: function( $element, value ) {
             $element.text( value.join(", ") );
+        },
+        names:function(model){
+            console.log(model);
+            return model.name;
         }
+    },
+    computeds:{
+        nixleMessage:function(){
+            return this.getBinding('nixle').nixleMessage;
+        }
+    },
+    bindingSources: {
+        nixleInfo: function() { return SkyModel.getModel("nixle")  }
     },
     initialize:function(){
         SkyView.setView(this.cid,new NixlView());
-        this.listenTo(SkyModel.GetModel("nixle"),"change",this.listenNixle);
+        this.listenTo(SkyModel.getModel("nixle"),"change",this.listenNixle);
     },
     listenNixle:function(model){
-        console.log(model.toJSON());
+        //console.log(model.toJSON());
         this.model.set("nixle",model.toJSON());
     }
 });

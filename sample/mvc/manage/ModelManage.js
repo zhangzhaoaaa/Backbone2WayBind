@@ -20,12 +20,12 @@
     }
 }(function(root,SkyModel,_,$){
     SkyModel.ModelData = {};
-    SkyModel.CreateModel = function(modelData,Model,options){
+    SkyModel.createModel = function(modelData,Model,options){
         var model = new Model(modelData||{},options||{});
         this.ModelData[model.modelName] = model;
         return model;
     };
-    SkyModel.GetModel = function(Model){
+    SkyModel.getModel = function(Model){
         return this.ModelData[Model];
     };
     SkyModel.fetchModel = function(modelArray){

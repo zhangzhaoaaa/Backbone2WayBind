@@ -34,7 +34,9 @@
         <input type="checkbox"  value="network" data-bind="checked:publish"/>Network
         <p class="publishCheckbox" data-bind="listing:publish"></p>
         <p class="publishMessage" data-bind="text:publishMessage"></p>
-        <p class="nixleMessage"></p>
+
+        <p class="nixleMessage" data-bind="text:nixleMessage"></p>
+        <p class="nixleMessage" data-bind="text:nixleInfo_nixleTitle"></p>
         <div id="nixle">
             <input type="text" class="nixleTitle"/>
             <input type="text" class="nixleMessage"/>
