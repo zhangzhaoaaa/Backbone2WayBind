@@ -3,6 +3,7 @@
  */
 var MessView = Backbone.Epoxy.View.extend({
     el: $("#message"),
+    viewName:'messageView',
     model:SkyModel.createModel(null,MessageModel),
     bindings: {
         "input.messageTitle":"value:messageTitle,events:['keyup']",

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../mvc/resouces/javascripts/jquery.js"></script>
+    <script src="../mvc/resouces/javascripts/underscore.js"></script>
+    <script src="../mvc/resouces/javascripts/backbone.js"></script>
+</head>
+<body>
+
+<script>
+    var SidebarView = Backbone.View.extend({});
+    var MenuView = Backbone.View.extend({});
+    var BaseView = Backbone.View.extend({
+        constructor: function() {
+            // Define the subviews object off of the prototype chain
+            this.subviews = {};
+
+            // Call the original constructor
+            Backbone.View.apply(this, arguments);
+        }
+    });
+
+    // Notice that we haven't changed any code for ContentView or HeaderView
+
+    var ContentView = BaseView.extend({
+        initialize: function() {
+            this.subviews.sidebar = new SidebarView()
+        }
+    });
+
+    var HeaderView = BaseView.extend({
+        initialize: function() {
+            this.subviews.menu = new MenuView();
+        }
+    });
+
+    var content = new ContentView();
+    var header = new HeaderView();
+</script>
+</body>
+</html>

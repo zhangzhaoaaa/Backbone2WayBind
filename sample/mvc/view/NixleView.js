@@ -3,6 +3,7 @@
  */
 var NixlView = Backbone.Epoxy.View.extend({
     el: $("#publish"),
+    viewName:'nixleView',
     model:SkyModel.createModel(SkyModel.getModel("notification").get("publish")['nixle'],NixleModel),
     bindings: {
         "input.nixleTitle":"value:nixleTitle,events:['keyup']",

@@ -3,6 +3,7 @@
  */
 var PublView = Backbone.Epoxy.View.extend({
     el: $("#publish"),
+    viewName:'publishView',
     model:SkyModel.createModel(SkyModel.getModel("notification").get("publish"),PublishModel),
     bindingHandlers: {
         listing: function( $element, value ) {

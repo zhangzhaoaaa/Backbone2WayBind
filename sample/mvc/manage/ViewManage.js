@@ -35,7 +35,7 @@
         return _.where(SkyView.views,{parentId:view.cid});
     };
     SkyView.getViewByName=function(viewName){
-        return _.where(SkyView.views,{viewName:view.viewName})[0];
+        return _.where(SkyView.views,{name:viewName})[0];
     };
     SkyView.addReferenceView=function(view,viewName){
         var referenceView = this.getViewByName(viewName);

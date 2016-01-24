@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../mvc/resouces/javascripts/jquery.js"></script>
+    <script src="../mvc/resouces/javascripts/underscore.js"></script>
+    <script src="../mvc/resouces/javascripts/backbone.js"></script>
+</head>
+<body>
+
+
+<script>
+    var BaseView = Backbone.View.extend({
+        // Create a property where we can hold references to subviews
+        subviews: {}
+    });
+
+    var ContentView = BaseView.extend({
+        initialize: function() {
+            this.subviews.sidebar = new SidebarView();
+        }
+    });
+
+    var HeaderView = BaseView.extend({
+        initialize: function() {
+            this.subviews.menu = new MenuView();
+        }
+    });
+
+    var content = new ContentView();
+    var header = new HeaderView();
+</script>
+</body>
+</html>
