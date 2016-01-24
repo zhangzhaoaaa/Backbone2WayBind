@@ -6,7 +6,7 @@ var NotiView = Backbone.Epoxy.View.extend({
     viewName:'notificationView',
     model: SkyModel.createModel(null,NotificationModel),
     bindings: {
-        "p.noti_title":"text:notificationTitle"
+        "input#noti_title":"value:notificationTitle,events:['keyup']"
     },
     initialize:function(){
         SkyView.setView(null,this);

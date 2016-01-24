@@ -6,11 +6,11 @@ var NixlView = Backbone.Epoxy.View.extend({
     viewName:'nixleView',
     model:SkyModel.createModel(SkyModel.getModel("notification").get("publish")['nixle'],NixleModel),
     bindings: {
-        "input.nixleTitle":"value:nixleTitle,events:['keyup']",
-        "input.nixleMessage":"value:nixleMessage,events:['keyup']",
+        "input#nixleTitle":"value:nixleTitle,events:['keyup']",
+        "input#nixleMessage":"value:nixleMessage,events:['keyup']",
         "input[type=checkbox]":"value:nixleCheck,events:['change']",
-        "p.nixleCheckbox":"text:nixleCheck",
-        "p.nixleSms":"text:nixleSms"
+        "p#nixleCheckbox":"text:nixleCheck",
+        "p#nixleSms":"text:nixleSms"
     },
     initialize:function(){
 

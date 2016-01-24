@@ -25,11 +25,13 @@
         this.ModelData[model.modelName] = model;
         return model;
     };
-    SkyModel.getModel = function(Model){
+    SkyModel.getModel = function(Model,options){
         return this.ModelData[Model];
     };
-    SkyModel.fetchModel = function(modelArray){
-
+    SkyModel.fetchModel = function(modelArray,options){
+        modelArray.forEach(function(current,index,array){
+            current.fetch();
+        });
     };
     return SkyModel;
 }));

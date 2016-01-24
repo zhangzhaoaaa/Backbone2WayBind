@@ -6,12 +6,11 @@ var MessView = Backbone.Epoxy.View.extend({
     viewName:'messageView',
     model:SkyModel.createModel(null,MessageModel),
     bindings: {
-        "input.messageTitle":"value:messageTitle,events:['keyup']",
-        "input.messageBody":"value:messageBody,events:['keyup']",
-        "p.noti_title":"text:messageEmail"
+        "input#messageTitle":"value:messageTitle,events:['keyup']",
+        "input#messageBody":"value:messageBody,events:['keyup']"
     },
     initialize:function(){
-        var template = $.templates("#theTmpl");
+        var template = $.templates("#messageTmpl");
         var htmlOutput = template.render(this.model.toJSON({computed:true}));
         this.$el.html(htmlOutput);
     }
