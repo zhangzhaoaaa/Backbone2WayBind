@@ -1,6 +1,7 @@
 *{
     margin:0;
     padding:0;
+    background-color: #FBFBFB;
 }
 div,p{
     margin: 5px;
@@ -9,4 +10,6 @@ div,p{
 #notification{
     margin:10px auto;
     width: 980px;
+    border:1px solid #F1EFEF;
 }
+

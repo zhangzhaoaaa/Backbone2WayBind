@@ -18,7 +18,16 @@
 <body>
 
 <div id="notification">
-    <h2>Time is coming<p class="noti_title"></p></h2>
+    <div class="header">
+        <h2>Notification</h2>
+    </div>
+    <div id="notificationTitle">
+        <div>
+            <span>Title</span><span>
+            <input type="text" id="notiTitle">
+        </span>
+        </div>
+    </div>
     <div id="message">
         <div data-bind="template:$model">
             <script id="theTmpl" type="text/x-jsrender">
