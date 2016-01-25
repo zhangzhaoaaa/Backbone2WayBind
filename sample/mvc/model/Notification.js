@@ -8,7 +8,8 @@ var NotificationModel = Backbone.Epoxy.Model.extend({
         notificationTitle: "noti_Title",
         message:{
             messageId:'mess_12345',
-            messageTitle:'mess_title'
+            messageTitle:'mess_title',
+            messageBody:'messageBody'
         },
         publish:{
             publishId:'publ_12345',

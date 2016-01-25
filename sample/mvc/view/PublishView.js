@@ -25,7 +25,7 @@ define("view/publishView", function(require) {
         },
         eventChange:function(e){
             if (e.target.value=='nixle'){
-                SkyView.setView(this.cid,new NixlView());
+                SkyView.setView(this.cid,new NixlView({el:$('#nixle')}));
             }
         },
         computeds:{
@@ -37,7 +37,6 @@ define("view/publishView", function(require) {
             nixleInfo: function() { return SkyModel.getModel("nixle")  }
         },
         initialize:function(){
-            //SkyView.setView(this.cid,new NixlView());
             var template = $.templates("#publishTmpl");
             var htmlOutput = template.render(this.model.toJSON({computed:true}));
             this.$el.html(htmlOutput);
