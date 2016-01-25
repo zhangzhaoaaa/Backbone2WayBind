@@ -3,6 +3,10 @@
  */
 define("view/publishView", function(require) {
     var NixlView = require("view/nixleView");
+    var template = require("view/publishTmpl.html");
+    if(template !== true){
+        $('body').append(template);
+    }
     var PublView = Backbone.Epoxy.View.extend({
         el: $("#publish"),
         viewName:'publishView',
@@ -16,6 +20,14 @@ define("view/publishView", function(require) {
                 return model.name;
             }
         },
+        events:{
+          "change input[name=publish]":"eventChange"
+        },
+        eventChange:function(e){
+            if (e.target.value=='nixle'){
+                SkyView.setView(this.cid,new NixlView());
+            }
+        },
         computeds:{
             nixleMessage:function(){
                 return this.getBinding('nixle').nixleMessage;
@@ -25,7 +37,10 @@ define("view/publishView", function(require) {
             nixleInfo: function() { return SkyModel.getModel("nixle")  }
         },
         initialize:function(){
-            SkyView.setView(this.cid,new NixlView());
+            //SkyView.setView(this.cid,new NixlView());
+            var template = $.templates("#publishTmpl");
+            var htmlOutput = template.render(this.model.toJSON({computed:true}));
+            this.$el.html(htmlOutput);
             this.listenTo(SkyModel.getModel("nixle"),"change",this.listenNixle);
         },
         listenNixle:function(model){

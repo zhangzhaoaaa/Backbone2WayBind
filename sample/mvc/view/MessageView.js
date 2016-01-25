@@ -2,6 +2,10 @@
  * Created by zhangmike on 16/1/20.
  */
 define("view/messageView", function(require) {
+    var template = require("view/messageTmpl.html");
+    if(template !== true){
+        $('body').append(template);
+    }
     var MessView = Backbone.Epoxy.View.extend({
         el: $("#message"),
         viewName:'messageView',

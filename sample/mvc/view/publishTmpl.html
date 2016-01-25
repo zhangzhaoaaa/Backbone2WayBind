@@ -1,0 +1,13 @@
+<div data-bind="template:$model">
+    <script id="publishTmpl" type="text/x-jsrender">
+        <div class="header"><h3>Publish</h3></div>
+        <input type="checkbox" name="publish" value="nixle" data-bind="checked:publish"/>Nixle
+        <input type="checkbox" name="publish" value="ipaws" data-bind="checked:publish"/>IPAWS
+        <input type="checkbox" name="publish" value="network" data-bind="checked:publish"/>Network
+        <p class="publishCheckbox" data-bind="listing:publish"></p>
+        <p class="publishMessage" data-bind="text:publishMessage"></p>
+
+        <p class="nixleMessage" data-bind="text:nixleMessage"></p>
+        <p class="nixleMessage" data-bind="text:nixleInfo_nixleTitle"></p>
+    </script>
+</div>

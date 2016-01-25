@@ -15,6 +15,12 @@
     <script src="../manage/ModelManage.js"></script>
     <script src="../resouces/javascripts/jsrender.js"></script>
     <script src="../resouces/javascripts/sea-debug.js"></script>
+    <script src="../resouces/javascripts/seajs-text-debug.js"></script>
+    <script>
+        seajs.config({
+            base: "../"
+        });
+    </script>
 </head>
 <body>
 
@@ -29,49 +35,12 @@
             </div>
     </div>
     <div id="message">
-        <div data-bind="template:$model">
-            <script id="messageTmpl" type="text/x-jsrender">
-                <div class="header"><h3>Message</h3></div>
-                <div class="messageRow">
-                    <div class="leftTitle">MessageTitle</div>
-                    <div class="rightInput"><input type="text" id="messageTitle"/></div>
-                </div>
-                <div class="messageRow">
-                    <div class="leftTitle">MessageBody</div>
-                    <div class="rightInput">
-                        <input type="text" id="messageBody"/>
-                    </div>
-                </div>
-            </script>
-        </div>
+
         <p class="messageEmail"></p>
     </div>
     <div id="publish">
-        <div class="header"><h3>Publish</h3></div>
-        <input type="checkbox"  value="nixle" data-bind="checked:publish"/>Nixle
-        <input type="checkbox"  value="ipaws" data-bind="checked:publish"/>IPAWS
-        <input type="checkbox"  value="network" data-bind="checked:publish"/>Network
-        <p class="publishCheckbox" data-bind="listing:publish"></p>
-        <p class="publishMessage" data-bind="text:publishMessage"></p>
-
-        <p class="nixleMessage" data-bind="text:nixleMessage"></p>
-        <p class="nixleMessage" data-bind="text:nixleInfo_nixleTitle"></p>
         <div id="nixle">
-            <div class="header"><h3>Nixle</h3></div>
-            <div class="messageRow">
-                <div>NixleTitle</div>
-                <div><input type="text" id="nixleTitle" /></div>
-            </div>
-            <div class="messageRow">
-                <div>NixleMessage</div>
-                <div><input type="text" id="nixleMessage"/></div>
-            </div>
-            <div class="messageRow">
-                <input  type="checkbox" name="nixle" class="nixleCheck"/>A
-                <input  type="checkbox" name="nixle" class="nixleCheck"/>B
-            </div>
-            <p id="nixleCheckbox"></p>
-            <p id="nixleSms"></p>
+
         </div>
     </div>
 </div>
