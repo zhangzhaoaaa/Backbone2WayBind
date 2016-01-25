@@ -4,21 +4,21 @@
 var NotificationModel = Backbone.Epoxy.Model.extend({
     modelName:"notification",
     defaults: {
-        notificationId: "noti_12345",
-        notificationTitle: "noti_Title",
+        notificationId: "",
+        notificationTitle: "",
         message:{
-            messageId:'mess_12345',
-            messageTitle:'mess_title',
-            messageBody:'messageBody'
+            messageId:'',
+            messageTitle:'',
+            messageBody:''
         },
         publish:{
-            publishId:'publ_12345',
-            publTitle:'publ_title',
-            publishMessage:'This is publishMessage',
+            publishId:'',
+            publTitle:'',
+            publishMessage:'',
             nixle:{
-                nixleId:'nixl_12345',
-                nixleTitle:'nixl_title',
-                nixleSms:'This is nixle sms'
+                nixleId:'',
+                nixleTitle:'',
+                nixleSms:''
             }
         }
     },

@@ -25,7 +25,7 @@ define("view/notificationInitView", function(require) {
                     }
                 }
             };
-            this.initializeData(data);
+            this.initializeData(null);
             seajs.use("view/notificationView",function(NotiView){
                 new NotiView();
             });

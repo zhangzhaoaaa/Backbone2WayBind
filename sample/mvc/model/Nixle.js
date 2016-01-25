@@ -4,9 +4,9 @@
 var NixleModel = Backbone.Epoxy.Model.extend({
     modelName:"nixle",
     defaults: {
-        nixleId:'mess_12345_self',
-        nixleTitle:'mess_title_self',
-        nixleMessage:'nixleMessage',
+        nixleId:'',
+        nixleTitle:'',
+        nixleMessage:'',
         nixleCheck:[]
     },
     parse:function(data){

@@ -4,9 +4,9 @@
 var MessageModel = Backbone.Epoxy.Model.extend({
     modelName:"message",
     defaults: {
-        messageId:'mess_12345_self/NO',
-        messageTitle:'mess_title_self.YES',
-        messageBody:'Good News ASA'
+        messageId:'',
+        messageTitle:'',
+        messageBody:''
     },
     computeds: {
         messageEmail: {
