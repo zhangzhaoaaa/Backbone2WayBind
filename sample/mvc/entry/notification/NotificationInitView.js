@@ -1,9 +1,12 @@
 /**
  * Created by mike on 16-1-13.
  */
-(function(){
+define("view/notificationInitView", function(require) {
     var NotificationInitView = {
-        getInstance:function(){
+        initializeData:function(data){
+            SkyModel.createModel(data,NotificationModel,{parse:true});
+        },
+        getInstance:function(data){
             var data = {
                 notificationId: "noti_12345",
                 notificationTitle: "noti_Title",
@@ -22,11 +25,15 @@
                     }
                 }
             };
-            //SkyModel.createModel(data,NotificationModel,{parse:true});
-            new NotiView();
+            this.initializeData(data);
+            seajs.use("view/notificationView",function(NotiView){
+                new NotiView();
+            });
         }
     };
-    NotificationInitView.getInstance();
-}());
+    return NotificationInitView;
+});
 
-console.log(SkyView.views);
+seajs.use("view/notificationInitView",function(view){
+   view.getInstance();
+});
