@@ -21,7 +21,9 @@
 }(function(root, SkyView, _, $){
     SkyView.views=[];
     SkyView.references=[];
-    SkyView.setView=function(parentId,view){
+    //TODO add referenceId
+    //TODO add getReferenceIdByView
+    SkyView.setView=function(parentId,view,options){
         SkyView.views.push({parentId:parentId,cid:view.cid,view:view,name:view.viewName});
     };
     SkyView.getViewById=function(view){

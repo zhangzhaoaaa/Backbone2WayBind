@@ -10,10 +10,9 @@ define("view/messageView", function(require) {
         el: $("#message"),
         viewName:'messageView',
         model:SkyModel.createModel(SkyModel.getModel("notification").get("message"),MessageModel),
-        /*bindings: {
-            "input#messageTitle":"value:messageTitle,events:['keyup']",
-            "input#messageBody":"value:messageBody,events:['keyup']"
-        },*/
+        bindingSources: {
+            nixleInfo: function() { return SkyModel.getModel("nixle")  }
+        },
         initialize:function(){
             var template = $.templates("#messageTmpl");
             var htmlOutput = template.render(this.model.toJSON({computed:true}));

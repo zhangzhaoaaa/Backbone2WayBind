@@ -7,7 +7,8 @@ var NixleModel = Backbone.Epoxy.Model.extend({
         nixleId:'',
         nixleTitle:'',
         nixleMessage:'',
-        nixleCheck:[]
+        nixleCheck:[],
+        cap:[{label:"Luke", value:"1"}, {label:"Leia", value:"2"},{label:"mike", value:"3"}]
     },
     parse:function(data){
 
