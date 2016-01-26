@@ -8,6 +8,7 @@ define("view/nixleView", function(require) {
     }
     var NixlView = Backbone.Epoxy.View.extend({
         el: $("#nixle"),
+        tagName:'div',
         viewName:'nixleView',
         model:SkyModel.createModel(SkyModel.getModel("notification").get("publish")['nixle'],NixleModel),
         bindingHandlers:{
@@ -22,7 +23,8 @@ define("view/nixleView", function(require) {
             this.$el.html(htmlOutput);
         },
         destroy:function(){
-            this.remove();
+            this.$el.empty();
+            this.stopListening();
         }
     });
     return NixlView;

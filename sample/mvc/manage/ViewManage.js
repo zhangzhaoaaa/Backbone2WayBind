@@ -37,7 +37,21 @@
         return _.where(SkyView.views,{parentId:view.cid});
     };
     SkyView.getViewByName=function(viewName){
-        return _.where(SkyView.views,{name:viewName})[0];
+        var views = _.where(SkyView.views,{name:viewName});
+        if (views&&views.length>0){
+            return views[0];
+        }else{
+            return null;
+        }
+    };
+    SkyView.deleteViewByName=function(viewName){
+        if (this.getViewByName(viewName)){
+            this.getViewByName(viewName).view.destroy();
+            SkyView.views = SkyView.views.filter(function(current,index,obj){
+                    return current.viewName!=viewName;
+            });
+            //TODO remove SkyModel with viewName
+        }
     };
     SkyView.addReferenceView=function(view,viewName){
         var referenceView = this.getViewByName(viewName);
