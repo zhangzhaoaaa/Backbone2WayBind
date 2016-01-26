@@ -4,23 +4,6 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="resources/css/style.css"/>
-    <script src="resources/javascripts/jquery.js"></script>
-    <script src="resources/javascripts/underscore.js"></script>
-    <script src="resources/javascripts/backbone.js"></script>
-    <script src="resources/javascripts/backbone.epoxy.js"></script>
-    <script src="model/Notification.js"></script>
-    <script src="model/Message.js"></script>
-    <script src="model/Publish.js"></script>
-    <script src="model/Nixle.js"></script>
-    <script src="manage/ModelManage.js"></script>
-    <script src="resources/javascripts/jsrender.js"></script>
-    <script src="resources/javascripts/sea-debug.js"></script>
-    <script src="resources/javascripts/seajs-text-debug.js"></script>
-    <script>
-        seajs.config({
-            base: "http://localhost:3001/"
-        });
-    </script>
 </head>
 <body>
 
@@ -41,6 +24,23 @@
 
     </div>
 </div>
+<script src="resources/javascripts/jquery.js"></script>
+<script src="resources/javascripts/underscore.js"></script>
+<script src="resources/javascripts/backbone.js"></script>
+<script src="resources/javascripts/backbone.epoxy.js"></script>
+<script src="resources/javascripts/jsrender.js"></script>
+<script src="resources/javascripts/sea-debug.js"></script>
+<script src="resources/javascripts/seajs-text-debug.js"></script>
+<script src="model/Notification.js"></script>
+<script src="model/Message.js"></script>
+<script src="model/Publish.js"></script>
+<script src="model/Nixle.js"></script>
+<script src="manage/ModelManage.js"></script>
+<script>
+    seajs.config({
+        base: "http://localhost:3001/"
+    });
+</script>
 <script src="manage/ViewManage.js"></script>
 <script src="view/NotificationView.js"></script>
 <script src="view/MessageView.js"></script>
