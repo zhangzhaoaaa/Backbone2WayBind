@@ -23,6 +23,7 @@ define("view/nixleView", function(require) {
             }
         },
         initialize:function(){
+            this.model.fetch({url:'/getNixle'});
             var template = $.templates("#nixleTmpl");
             var htmlOutput = template.render(this.model.toJSON({computed:true}));
             this.$el.html(htmlOutput);

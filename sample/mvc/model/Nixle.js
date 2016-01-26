@@ -3,6 +3,7 @@
  */
 var NixleModel = Backbone.Epoxy.Model.extend({
     modelName:"nixle",
+    url:'/getNixle',
     defaults: {
         nixleId:'',
         nixleTitle:'',
@@ -11,6 +12,7 @@ var NixleModel = Backbone.Epoxy.Model.extend({
         cap:[{label:"Luke", value:"1"}, {label:"Leia", value:"2"},{label:"mike", value:"3"}]
     },
     parse:function(data){
-
+        console.log("parse",data.data);
+        return data.data;
     }
 });
