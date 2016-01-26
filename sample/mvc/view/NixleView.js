@@ -10,23 +10,19 @@ define("view/nixleView", function(require) {
         el: $("#nixle"),
         viewName:'nixleView',
         model:SkyModel.createModel(SkyModel.getModel("notification").get("publish")['nixle'],NixleModel),
-        /*bindings: {
-            "input#nixleTitle":"value:nixleTitle,events:['keyup']",
-            "input#nixleMessage":"value:nixleMessage,events:['keyup']",
-            "input[type=checkbox]":"value:nixleCheck,events:['change']",
-            "p#nixleCheckbox":"text:nixleCheck",
-            "p#nixleSms":"text:nixleSms"
-        },*/
         bindingHandlers:{
             listing: function( $element, value ) {
                 $element.text( value.join(", ") );
             }
         },
         initialize:function(){
-            this.model.fetch({url:'/getNixle'});
+            this.model.fetch();
             var template = $.templates("#nixleTmpl");
             var htmlOutput = template.render(this.model.toJSON({computed:true}));
             this.$el.html(htmlOutput);
+        },
+        destroy:function(){
+            this.remove();
         }
     });
     return NixlView;

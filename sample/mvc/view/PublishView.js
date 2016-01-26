@@ -43,7 +43,7 @@ define("view/publishView", function(require) {
             this.listenTo(SkyModel.getModel("nixle"),"change",this.listenNixle);
         },
         listenNixle:function(model){
-            //console.log(model.toJSON());
+            console.log(model.toJSON());
             this.model.set("nixle",model.toJSON());
         }
     });
