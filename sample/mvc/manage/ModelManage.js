@@ -19,14 +19,18 @@
         root.SkyModel = factory(root, {}, root._, (root.jQuery || root.Zepto || root.ender || root.$));
     }
 }(function(root,SkyModel,_,$){
-    SkyModel.ModelData = {};
+    SkyModel.ModelData = [];
     SkyModel.createModel = function(modelData,Model,options){
         var model = new Model(modelData||{},options||{});
-        this.ModelData[model.modelName] = model;
+        //this.ModelData[model.modelName] = model;
+        this.ModelData.push({initModel: _.clone(model),currentModel:model,modelName:model.modelName});
         return model;
     };
     SkyModel.getModel = function(Model,options){
-        return this.ModelData[Model];
+        return _.where(this.ModelData,{modelName:Model})[0];
+    };
+    SkyModel.removeModelByName = function(Model,options){
+        SkyModel.getModel(Model).currentModel.set(SkyModel.getModel(Model).initModel.toJSON());
     };
     SkyModel.fetchModel = function(modelArray,options){
         modelArray.forEach(function(current,index,array){

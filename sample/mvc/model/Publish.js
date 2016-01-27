@@ -6,7 +6,7 @@ var PublishModel = Backbone.Epoxy.Model.extend({
     defaults: {
         publishId:'',
         publTitle:'',
-        publish:['nixle'],
+        publish:[],
         nixle:{
             nixleMessage:"fff"
         }

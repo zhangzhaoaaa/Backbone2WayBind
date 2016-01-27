@@ -44,13 +44,13 @@
             return null;
         }
     };
-    SkyView.deleteViewByName=function(viewName){
+    SkyView.removeViewByName=function(viewName){
         if (this.getViewByName(viewName)){
             this.getViewByName(viewName).view.destroy();
             SkyView.views = SkyView.views.filter(function(current,index,obj){
-                    return current.viewName!=viewName;
+                    return current.name!=viewName;
             });
-            //TODO remove SkyModel with viewName
+            //console.log(SkyView.views);
         }
     };
     SkyView.addReferenceView=function(view,viewName){

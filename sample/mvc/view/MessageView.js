@@ -9,7 +9,7 @@ define("view/messageView", function(require) {
     var MessView = Backbone.Epoxy.View.extend({
         el: $("#message"),
         viewName:'messageView',
-        model:SkyModel.createModel(SkyModel.getModel("notification").get("message"),MessageModel),
+        model:SkyModel.createModel(SkyModel.getModel("notification").currentModel.get("message"),MessageModel),
         bindingSources: {
             nixleInfo: function() { return SkyModel.getModel("nixle")  }
         },
