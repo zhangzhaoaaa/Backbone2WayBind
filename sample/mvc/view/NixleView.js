@@ -27,7 +27,7 @@ define("view/nixleView", function(require) {
             $('#nixle').append(this.$el.html(htmlOutput));
         },
         destroy:function(){
-            SkyModel.removeModelByName("nixle");
+            SkyModel.removeModelByName("nixleModel");
             this.$el.remove();
         }
     });
