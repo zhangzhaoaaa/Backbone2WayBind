@@ -4,6 +4,7 @@
 define("view/publishView", function(require) {
     var NixlView = require("view/nixleView");
     var template = require("view/publishTmpl.html");
+    var PublishModel = require("model/PublishModel");
     if(template !== true){
         $('body').append(template);
     }
@@ -15,7 +16,7 @@ define("view/publishView", function(require) {
             IPAWS:'ipaws',
             NETWORK:'network'
         },
-        model:SkyModel.createModel(SkyModel.getModel("notification").currentModel.get("publish"),PublishModel),
+        model:SkyModel.createModel(SkyModel.getModel("notificationModel").get("publish"),PublishModel),
         bindingHandlers: {
             listing: function( $element, value ) {
                 $element.text( value.join(", ") );
@@ -66,7 +67,7 @@ define("view/publishView", function(require) {
         },
         bindingSources: {
             nixleInfo: function() {
-                return SkyModel.getModel("nixle").currentModel;
+                return SkyModel.getModel("nixleModel");
             }
         },
         events:{
@@ -75,11 +76,9 @@ define("view/publishView", function(require) {
         eventChange:function(e){
             if (e.target.value=='nixle'){
                 if (e.target.checked){
-                    SkyView.setView(this.cid,new NixlView(/*{el:$('#nixle')}*/));
+                    SkyView.setView(this.cid,new NixlView());
                 }else{
                     SkyView.removeViewByName("nixleView");
-                    //this.model.set("nixle",{});
-                    //SkyView.removeViewByName('nixleView');
                 }
             }
         },

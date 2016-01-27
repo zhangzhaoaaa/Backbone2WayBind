@@ -50,7 +50,6 @@
             SkyView.views = SkyView.views.filter(function(current,index,obj){
                     return current.name!=viewName;
             });
-            //console.log(SkyView.views);
         }
     };
     SkyView.addReferenceView=function(view,viewName){

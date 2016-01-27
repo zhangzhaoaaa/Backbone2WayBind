@@ -2,6 +2,7 @@
  * Created by mike on 16-1-13.
  */
 define("view/notificationInitView", function(require) {
+    var NotificationModel = require("model/NotificationModel");
     var NotificationInitView = {
         initializeData:function(data){
             SkyModel.createModel(data,NotificationModel,{parse:true});

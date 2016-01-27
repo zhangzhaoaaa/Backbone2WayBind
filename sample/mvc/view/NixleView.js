@@ -3,14 +3,14 @@
  */
 define("view/nixleView", function(require) {
     var template = require("view/nixleTmpl.html");
+    var NixleModel = require("model/NixleModel");
     if(template !== true){
         $('body').append(template);
     }
     var NixlView = Backbone.Epoxy.View.extend({
-        /*el: $("#nixle"),*/
         tagName:'div',
         viewName:'nixleView',
-        model:SkyModel.createModel(SkyModel.getModel("notification").currentModel.get("publish")['nixle'],NixleModel),
+        model:SkyModel.createModel(SkyModel.getModel("notificationModel").get("publish")['nixle'],NixleModel),
         bindingHandlers:{
             listing: function( $element, value ) {
                 if (!value){

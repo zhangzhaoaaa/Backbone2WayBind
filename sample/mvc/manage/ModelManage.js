@@ -22,20 +22,36 @@
     SkyModel.ModelData = [];
     SkyModel.createModel = function(modelData,Model,options){
         var model = new Model(modelData||{},options||{});
-        //this.ModelData[model.modelName] = model;
-        this.ModelData.push({initModel: _.clone(model),currentModel:model,modelName:model.modelName});
+        this.ModelData[model.modelName] = model;
         return model;
     };
-    SkyModel.getModel = function(Model,options){
-        return _.where(this.ModelData,{modelName:Model})[0];
+    SkyModel.getModel = function(modelName,options){
+        return this.ModelData[modelName]||{};
     };
-    SkyModel.removeModelByName = function(Model,options){
-        SkyModel.getModel(Model).currentModel.set(SkyModel.getModel(Model).initModel.toJSON());
+    SkyModel.removeModelByName = function(modelName,options){
+        var modelData = SkyModel.getModel(modelName).toJSON();
+        resetModel(SkyModel.getModel(modelName),modelData);
     };
     SkyModel.fetchModel = function(modelArray,options){
         modelArray.forEach(function(current,index,array){
             current.fetch();
         });
     };
+    function resetModel(model,attrs) {
+        for (var attribute in attrs) {
+            if (attrs.hasOwnProperty(attribute)) {
+                var value = attrs[attribute];
+                if (_.isString(value)) {
+                    model.set(attribute,"");
+                }else if(_.isArray(value)) {
+                    model.set(attribute,[]);
+                }else if(_.isNull(value)){
+                    model.set(attribute,null);
+                }else if (_.isObject(value)) {
+                    model.set(attribute,{});
+                }
+            }
+        }
+    }
     return SkyModel;
 }));

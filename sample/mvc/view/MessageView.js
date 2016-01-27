@@ -3,15 +3,16 @@
  */
 define("view/messageView", function(require) {
     var template = require("view/messageTmpl.html");
+    var MessageModel = require("model/MessageModel");
     if(template !== true){
         $('body').append(template);
     }
     var MessView = Backbone.Epoxy.View.extend({
         el: $("#message"),
         viewName:'messageView',
-        model:SkyModel.createModel(SkyModel.getModel("notification").currentModel.get("message"),MessageModel),
+        model:SkyModel.createModel(SkyModel.getModel("notificationModel").get("message"),MessageModel),
         bindingSources: {
-            nixleInfo: function() { return SkyModel.getModel("nixle")  }
+            nixleInfo: function() { return SkyModel.getModel("nixleModel")  }
         },
         initialize:function(){
             var template = $.templates("#messageTmpl");
