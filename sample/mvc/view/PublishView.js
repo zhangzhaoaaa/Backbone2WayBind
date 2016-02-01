@@ -24,40 +24,6 @@ define("view/publishView", function(require) {
             names:function(model){
                 console.log(model);
                 return model.name;
-            },
-            managePublish:function($element,value,context){
-                console.log(this.view.getBinding("publish"));
-                var self = this.view;
-
-                var array = _.partition(['nixle','ipaws','network'], function(value,key,obj){
-                    return _.contains(self.getBinding('publish'),value);
-                });
-                console.log(array);
-                array[0].forEach(function(current,index,array){
-                    if (current==self.pageConstants.NIXLE){
-                        SkyView.setView(self.cid,new NixlView({el:$('#nixle')}));
-                    }if (current==self.pageConstants.IPAWS){
-                        console.log('ipaws create....');
-                    }
-                    if (current==self.pageConstants.NETWORK){
-                        console.log('network create....');
-                    }
-                });
-                array[1].forEach(function(current,index,array){
-                    if (current==self.pageConstants.NIXLE){
-                        SkyView.deleteViewByName("nixleView");
-                    }if (current==self.pageConstants.IPAWS){
-                        SkyView.deleteViewByName("ipawsView");
-                        console.log('ipaws delete....');
-                    }
-                    if (current==self.pageConstants.NETWORK){
-                        SkyView.deleteViewByName("networkView");
-                        console.log('network delete....');
-                    }
-                });
-                /*if(value==this.view.pageConstants.NIXLE){
-                    SkyView.setView(this.cid,new NixlView({el:$('#nixle')}));
-                }*/
             }
         },
         computeds:{
@@ -73,13 +39,23 @@ define("view/publishView", function(require) {
         events:{
             "change input[name=publish]":"eventChange"
         },
+        createSubView:function(){
+            var args = [].slice.call(arguments,0);
+            if (args[0]){
+                SkyView.setView(this.cid, new args[1]());
+            }else{
+                SkyView.removeViewByName(args[2]);
+            }
+        },
         eventChange:function(e){
-            if (e.target.value=='nixle'){
-                if (e.target.checked){
-                    SkyView.setView(this.cid,new NixlView());
-                }else{
-                    SkyView.removeViewByName("nixleView");
-                }
+            switch (e.target.value){
+                case this.pageConstants.NIXLE:
+                    this.createSubView(e.target.checked,NixlView,"nixleView");
+                    break;
+                case this.pageConstants.IPAWS:
+                    break;
+                case this.pageConstants.NETWORK:
+                    break;
             }
         },
         initialize:function(){

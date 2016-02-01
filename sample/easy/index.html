@@ -3,10 +3,10 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="../mvc/resouces/javascripts/jquery.js"></script>
-    <script src="../mvc/resouces/javascripts/underscore.js"></script>
-    <script src="../mvc/resouces/javascripts/backbone.js"></script>
-    <script src="../mvc/resouces/javascripts/backbone.epoxy.js"></script>
+    <script src="../mvc/resources/javascripts/jquery.js"></script>
+    <script src="../mvc/resources/javascripts/underscore.js"></script>
+    <script src="../mvc/resources/javascripts/backbone.js"></script>
+    <script src="../mvc/resources/javascripts/backbone.epoxy.js"></script>
 </head>
 <body>
 <div id="app-luke" class="demo">
@@ -38,6 +38,15 @@
     });
 
     var view = new BindingView({model: bindModel});
+
+    var filters = {a:function(){return 1;}};
+    var context={firstName:function(){
+        return 2;
+    }};
+    var declarations="value:firstName,events:['keyup']";
+    var bind = new Function('$f','$c','with($f){with($c){return{'+ declarations +'}}}');
+    var bindings = bind(filters, context);
+    console.log(bindings);
 </script>
 </body>
 </html>
