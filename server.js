@@ -20,6 +20,9 @@ app.get('/notification',function(req, res, next) {
     res.render('notification', { title: 'Express' });
 });
 
+app.get('/shoppingcart',function(req, res, next) {
+    res.render('shoppingcart', { title: 'Express' });
+});
 
 app.get(    '/getNixle',      function(req,res,next){
     var data={

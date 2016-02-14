@@ -1,7 +1,7 @@
 /**
  * Created by mike on 16-2-14.
  */
-define("model/shoppingcart/ShoppingCartModel",function(){
+define("model/shoppingcart/shoppingCartModel",function(){
     var ShoppingCartModel = Backbone.Epoxy.Model.extend({
         modelName:"shoppingCartModel",
         defaults: {

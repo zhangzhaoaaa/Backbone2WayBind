@@ -3,10 +3,30 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>购物车</title>
+    <link rel="stylesheet" href="resources/css/style.css"/>
 </head>
 <body>
-        <div>这里是列表</div>
-        <hr/>
-        <div>这里是购物车</div>
+        <div id="shopping">
+            <div class="header"><h3>Product List</h3></div>
+            <ul id="productList" data-bind="collection:$collection">
+            </ul>
+        </div>
+        <script src="resources/javascripts/jquery.js"></script>
+        <script src="resources/javascripts/underscore.js"></script>
+        <script src="resources/javascripts/backbone.js"></script>
+        <script src="resources/javascripts/backbone.epoxy.js"></script>
+        <script src="resources/javascripts/jsrender.js"></script>
+        <script src="resources/javascripts/sea-debug.js"></script>
+        <script src="resources/javascripts/seajs-text-debug.js"></script>
+        <script src="manage/ModelManage.js"></script>
+        <script>
+            seajs.config({
+                base: "http://localhost:3001/"
+            });
+        </script>
+        <script src="manage/ViewManage.js"></script>
+        <script src="view/shoppingcart/ShoppingMallView.js"></script>
+        <script src="view/shoppingcart/ShoppingView.js"></script>
+        <script src="entry/shoppingcart/ShoppingInitView.js"></script>
 </body>
 </html>
