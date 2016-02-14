@@ -1,10 +1,10 @@
 /**
  * Created by zhangmike on 16/1/20.
  */
-define("view/notificationView", function(require) {
-    var MessView = require("view/messageView");
-    var PublView = require("view/publishView");
-    var NotificationModel = require("model/NotificationModel");
+define("view/eb/notificationView", function(require) {
+    var MessView = require("view/eb/messageView");
+    var PublView = require("view/eb/publishView");
+    var NotificationModel = require("model/eb/NotificationModel");
     var NotiView = Backbone.Epoxy.View.extend({
         el: $("#notification"),
         viewName:'notificationView',

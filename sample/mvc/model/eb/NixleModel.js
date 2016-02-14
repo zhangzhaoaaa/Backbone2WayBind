@@ -1,7 +1,7 @@
 /**
  * Created by zhangmike on 16/1/20.
  */
-define("model/NixleModel", function(require) {
+define("model/eb/NixleModel", function(require) {
     var NixleModel = Backbone.Epoxy.Model.extend({
         modelName:"nixleModel",
         url:'/getNixle',

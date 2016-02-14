@@ -1,7 +1,7 @@
 /**
  * Created by zhangmike on 16/1/20.
  */
-define("model/MessageModel",function(){
+define("model/eb/MessageModel",function(){
     var MessageModel = Backbone.Epoxy.Model.extend({
         modelName:"messageModel",
         defaults: {

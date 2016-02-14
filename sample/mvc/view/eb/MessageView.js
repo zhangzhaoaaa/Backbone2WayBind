@@ -1,9 +1,9 @@
 /**
  * Created by zhangmike on 16/1/20.
  */
-define("view/messageView", function(require) {
-    var template = require("view/messageTmpl.html");
-    var MessageModel = require("model/MessageModel");
+define("view/eb/messageView", function(require) {
+    var template = require("view/eb/messageTmpl.html");
+    var MessageModel = require("model/eb/MessageModel");
     if(template !== true){
         $('body').append(template);
     }

@@ -1,7 +1,7 @@
 /**
  * Created by zhangmike on 16/1/20.
  */
-define("model/NotificationModel", function(require) {
+define("model/eb/NotificationModel", function(require) {
     var NotificationModel = Backbone.Epoxy.Model.extend({
         modelName:"notificationModel",
         defaults: {

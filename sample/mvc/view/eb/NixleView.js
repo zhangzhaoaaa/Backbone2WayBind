@@ -1,9 +1,9 @@
 /**
  * Created by zhangmike on 16/1/20.
  */
-define("view/nixleView", function(require) {
-    var template = require("view/nixleTmpl.html");
-    var NixleModel = require("model/NixleModel");
+define("view/eb/nixleView", function(require) {
+    var template = require("view/eb/nixleTmpl.html");
+    var NixleModel = require("model/eb/NixleModel");
     if(template !== true){
         $('body').append(template);
     }

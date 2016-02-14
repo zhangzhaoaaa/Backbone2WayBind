@@ -1,10 +1,10 @@
 /**
  * Created by zhangmike on 16/1/20.
  */
-define("view/publishView", function(require) {
-    var NixlView = require("view/nixleView");
-    var template = require("view/publishTmpl.html");
-    var PublishModel = require("model/PublishModel");
+define("view/eb/publishView", function(require) {
+    var NixlView = require("view/eb/nixleView");
+    var template = require("view/eb/publishTmpl.html");
+    var PublishModel = require("model/eb/PublishModel");
     if(template !== true){
         $('body').append(template);
     }

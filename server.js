@@ -16,8 +16,8 @@ app.set( 'views', path.join( __dirname, 'sample/mvc/pages' ));
 app.set( 'view engine', 'html' );
 app.use( static( path.join( __dirname, 'sample/mvc' )));
 
-app.get('/index',function(req, res, next) {
-    res.render('sample1', { title: 'Express' });
+app.get('/notification',function(req, res, next) {
+    res.render('notification', { title: 'Express' });
 });
 
 

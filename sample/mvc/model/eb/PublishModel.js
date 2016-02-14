@@ -1,7 +1,7 @@
 /**
  * Created by zhangmike on 16/1/20.
  */
-define("model/PublishModel", function(require) {
+define("model/eb/PublishModel", function(require) {
     var PublishModel = Backbone.Epoxy.Model.extend({
         modelName:"publishModel",
         defaults: {

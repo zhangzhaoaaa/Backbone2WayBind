@@ -2,7 +2,7 @@
  * Created by mike on 16-1-13.
  */
 define("view/notificationInitView", function(require) {
-    var NotificationModel = require("model/NotificationModel");
+    var NotificationModel = require("model/eb/NotificationModel");
     var NotificationInitView = {
         initializeData:function(data){
             SkyModel.createModel(data,NotificationModel,{parse:true});
@@ -27,7 +27,7 @@ define("view/notificationInitView", function(require) {
                 }
             };
             this.initializeData(null);
-            seajs.use("view/notificationView",function(NotiView){
+            seajs.use("view/eb/notificationView",function(NotiView){
                 new NotiView();
             });
         }
