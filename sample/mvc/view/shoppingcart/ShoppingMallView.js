@@ -15,6 +15,12 @@ define("view/shoppingcart/shoppingMallView", function(require) {
             SkyView.setView(this.cid,new ShoppingView());
             this.listenTo(SkyModel.getCollection("shoppingCartItemCollection"),"change",this.listenShoppingCart);
         },
+        events:{
+            "click #settleAccount":"eventSettleAccount"
+        },
+        eventSettleAccount:function(){
+            this.getJsonData();
+        },
         listenShoppingCart:function(model){
             var me = this;
             var totalPrice = 0.0;
@@ -22,6 +28,14 @@ define("view/shoppingcart/shoppingMallView", function(require) {
                 totalPrice+=parseFloat(current.get("itemPrice"));
             });
             me.model.set("totalPrice",totalPrice.toFixed(2));
+        },
+        getJsonData:function(){
+            var collections = SkyModel.getCollection("shoppingCartItemCollection").toJSON();
+            var array = [];
+            collections.forEach(function(current,index,col){
+                array.push(_.pick(current,'id','quantity'));
+            });
+            console.log(array);
         }
     });
     return shoppingMallView;

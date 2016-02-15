@@ -11,10 +11,15 @@
             <ul id="productList" data-bind="collection:$collection">
             </ul>
             <p><span>总计</span><span id="totalPrice"></span></p>
+
+            <p>
+                <span><button id="settleAccount">去结算</button></span>
+            </p>
         </div>
         <script src="resources/javascripts/jquery.js"></script>
         <script src="resources/javascripts/underscore.js"></script>
         <script src="resources/javascripts/backbone.js"></script>
+        <script src="resources/javascripts/backbone.localStorage.js"></script>
         <script src="resources/javascripts/backbone.epoxy.js"></script>
         <script src="resources/javascripts/jsrender.js"></script>
         <script src="resources/javascripts/sea-debug.js"></script>

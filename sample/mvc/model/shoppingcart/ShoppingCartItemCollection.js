@@ -8,7 +8,8 @@ define("model/shoppingcart/ShoppingCartItemCollection",function(require){
     var ShoppingCartItemModel = require("model/shoppingcart/ShoppingCartItemModel");
     var ListCollection = Backbone.Collection.extend({
         model: ShoppingCartItemModel,
-        collectionName:"shoppingCartItemCollection"
+        collectionName:"shoppingCartItemCollection",
+        localStorage: new Backbone.LocalStorage("shopping-backbone")
     });
     return ListCollection;
 });

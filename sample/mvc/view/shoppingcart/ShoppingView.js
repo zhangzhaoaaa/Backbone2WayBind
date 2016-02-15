@@ -9,7 +9,10 @@ define("view/shoppingcart/shoppingView", function(require) {
         viewName:'shoppingView',
         itemView: ListItemView,
         initialize:function(){
+            this.listenTo(this.collection, 'all', this.render);
             this.collection = SkyModel.getCollection("shoppingCartItemCollection");
+        },
+        render:function(){
             $('#shopping').append(this.$el.html());
         },
         events:{

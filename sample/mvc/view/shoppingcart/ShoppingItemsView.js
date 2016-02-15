@@ -12,6 +12,13 @@ define("view/shoppingcart/shoppingItemsView", function(require) {
             var template = $.templates("#shoppingcartItemTmpl");
             var htmlOutput = template.render(this.model.toJSON({computed:true}));
             this.$el.html(htmlOutput);
+            this.listenTo(this.model, 'destroy', this.remove);
+        },
+        events:{
+            "click .deleteItem":"eventDeleteItem"
+        },
+        eventDeleteItem:function(e){
+            this.model.collection.remove();
         }
     });
     return ListItemView;
