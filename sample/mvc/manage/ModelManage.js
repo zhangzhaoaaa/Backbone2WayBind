@@ -37,6 +37,14 @@
             current.fetch();
         });
     };
+    SkyModel.createCollection = function(modelData,Collection,options){
+        var collection = new Collection(modelData||{},options||{});
+        this.ModelData[collection.collectionName] = collection;
+        return collection;
+    };
+    SkyModel.getCollection = function(collectionName,options){
+        return this.ModelData[collectionName]||{};
+    };
     function resetModel(model,attrs) {
         for (var attribute in attrs) {
             if (attrs.hasOwnProperty(attribute)) {

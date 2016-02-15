@@ -7,9 +7,10 @@
 </head>
 <body>
         <div id="shopping">
-            <div class="header"><h3>Product List</h3></div>
+            <div class="header"><h3>购物车</h3></div>
             <ul id="productList" data-bind="collection:$collection">
             </ul>
+            <p><span>总计</span><span id="totalPrice"></span></p>
         </div>
         <script src="resources/javascripts/jquery.js"></script>
         <script src="resources/javascripts/underscore.js"></script>
@@ -27,6 +28,7 @@
         <script src="manage/ViewManage.js"></script>
         <script src="view/shoppingcart/ShoppingMallView.js"></script>
         <script src="view/shoppingcart/ShoppingView.js"></script>
+        <script src="view/shoppingcart/ShoppingItemsView.js"></script>
         <script src="entry/shoppingcart/ShoppingInitView.js"></script>
 </body>
 </html>

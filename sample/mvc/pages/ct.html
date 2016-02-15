@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="resources/css/style.css"/>
+</head>
+<body>
+
+<div id="notification">
+    <ul data-bind='collection:$collection' id="col"></ul>
+</div>
+<script src="resources/javascripts/jquery.js"></script>
+<script src="resources/javascripts/underscore.js"></script>
+<script src="resources/javascripts/backbone.js"></script>
+<script src="resources/javascripts/backbone.epoxy.js"></script>
+<script src="resources/javascripts/jsrender.js"></script>
+<script src="resources/javascripts/sea-debug.js"></script>
+<script src="resources/javascripts/seajs-text-debug.js"></script>
+<script src="manage/ModelManage.js"></script>
+<script>
+    seajs.config({
+        base: "http://localhost:3001/"
+    });
+</script>
+<script>
+    var ListItemView = Backbone.View.extend({
+        tagName: "li",
+        initialize: function() {
+            this.$el.text( this.model.get("label") );
+        }
+    });
+
+    // Collection defining a Model and View:
+    var ListCollection = Backbone.Collection.extend({
+        model: Backbone.Model
+    });
+
+    // Binding view for list of collection items:
+    var ListView = Backbone.Epoxy.View.extend({
+        el: "#col",
+        itemView: ListItemView,
+        initialize: function() {
+            this.collection = new ListCollection();
+            this.collection.reset([{label: "Luke Skywalker"}, {label: "Han Solo"}]);
+            $('#notification').append(this.$el.html());
+        }
+    });
+
+    var view = new ListView();
+</script>
+</body>
+</html>

@@ -1,3 +1,13 @@
 <script id="shoppingcartItemTmpl" type="text/x-jsrender">
-            <span data-bind="text:price"></span>
+    <p>
+        <span data-bind="text:productId"></span>
+        <span data-bind="text:productName"></span>
+        <span data-bind="text:productPrice"></span>
+        <span>
+            <a href="#" id="minus" mid="{{:id}}" class="counter">-</a>
+                <input data-bind="value:quantity,events:['keyup']" type="text" />
+            <a href="#" mid="{{:id}}" class="counter" id="add">+</a>
+        </span>
+        <span data-bind="text:itemPrice"></span>
+    </p>
 </script>

@@ -5,30 +5,41 @@
  * Created by mike on 16-1-13.
  */
 define("view/shoppingInitView", function(require) {
-    var ShoppingCartModel = require("model/shoppingcart/shoppingCartModel");
-    var ShoppingCartItemModel = require("model/shoppingcart/shoppingCartItemModel");
+    var ShoppingCartModel = require("model/shoppingcart/ShoppingCartModel");
+    var ShoppingCartItemCollection = require("model/shoppingcart/ShoppingCartItemCollection");
     var ShoppingInitView = {
         initializeData:function(data){
             SkyModel.createModel(data,ShoppingCartModel,{parse:true});
+            SkyModel.createCollection(SkyModel.getModel("shoppingCartModel").get("items"),ShoppingCartItemCollection);
         },
         getInstance:function(data){
             var data = {
-                totalPrice:0,//总价
+                totalPrice:109.10,//总价
                 items:[
                     {
+                        id:1,
                         product:{
-                            id:"123",//商品ID
+                            id:1,//商品ID
                             name:"apple",//商品名称
-                            price:10.0//商品价格
+                            price:10.1//商品价格
                         },//商品
                         quantity:10,//数量
-                        price:0.0
+                        price:100.1
+                    },
+                    {
+                        id:2,
+                        product:{
+                            id:2,
+                            name: "Mike",
+                            price:3.0
+                        },
+                        quantity:3,
+                        price:9.0
                     }
                 ]//商品条目
             };
-            this.initializeData(null);
+            this.initializeData(data);
             seajs.use("view/shoppingcart/shoppingMallView",function(ShoppingMallView){
-
                 new ShoppingMallView();
             });
         }

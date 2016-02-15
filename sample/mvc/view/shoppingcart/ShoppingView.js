@@ -2,32 +2,30 @@
  * Created by mike on 16-2-14.
  */
 define("view/shoppingcart/shoppingView", function(require) {
-    var template = require("view/shoppingcart/shoppingcartTmpl.html");
-    if(template !== true){
-        $('body').append(template);
-    }
-    var ListItemView = Backbone.View.extend({
-        tagName: "li",
-        initialize: function() {
-            var template = $.templates("#shoppingcartItemTmpl");
-            var htmlOutput = template.render(this.model.toJSON({computed:true}));
-            this.$el.html(htmlOutput);
-        }
-    });
-    var coll = Backbone.Collection.extend({
-        model: Backbone.Model
-    });
+    var ListItemView = require("view/shoppingcart/shoppingItemsView");
+    var ShoppingCartItemModel = require("model/shoppingcart/ShoppingCartItemModel");
     var shoppingView = Backbone.Epoxy.View.extend({
-        el:$('#productList'),
+        el:'#productList',
         viewName:'shoppingView',
-        bindings:"data-bind",
         itemView: ListItemView,
-
         initialize:function(){
-            this.collection = new coll();
-            //var template = $.templates("#shoppingcartTmpl");
-            //var htmlOutput = template.render(this.model.toJSON({computed:true}));
-            //this.$el.html(htmlOutput);
+            this.collection = SkyModel.getCollection("shoppingCartItemCollection");
+            $('#shopping').append(this.$el.html());
+        },
+        events:{
+            'click .counter':"eventChangeCount"
+        },
+        eventChangeCount:function(e){
+            var target = e.target;
+            var $target = $(target);
+            var quantity = 0;
+            var model = this.collection.get($target.attr('mid'));
+            if (target.id==='minus'){
+                quantity = model.get("quantity")-1;
+            }else{
+                quantity = model.get("quantity")+1;
+            }
+            model.set("quantity",quantity<0?0:quantity);
         }
     });
     return shoppingView;
