@@ -1,7 +1,7 @@
 /**
  * Created by mike on 16-2-15.
  */
-define("view/shoppingcart/shoppingItemsView", function(require) {
+define("view/shoppingcart/shoppingItemView", function(require) {
     var template = require("view/shoppingcart/shoppingcartTmpl.html");
     if(template !== true){
         $('body').append(template);

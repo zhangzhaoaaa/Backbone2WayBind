@@ -39,8 +39,8 @@ define("view/shoppingInitView", function(require) {
                 ]//商品条目
             };
             this.initializeData(data);
-            seajs.use("view/shoppingcart/shoppingMallView",function(ShoppingMallView){
-                new ShoppingMallView();
+            seajs.use("view/shoppingcart/shoppingCartView",function(ShoppingCartView){
+                new ShoppingCartView();
             });
         }
     };

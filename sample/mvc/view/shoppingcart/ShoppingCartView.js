@@ -1,11 +1,11 @@
 /**
  * Created by zhangmike on 16/2/14.
  */
-define("view/shoppingcart/shoppingMallView", function(require) {
-    var ShoppingView = require("view/shoppingcart/shoppingView");
-    var shoppingMallView = Backbone.Epoxy.View.extend({
+define("view/shoppingcart/shoppingCartView", function(require) {
+    var ShoppingView = require("view/shoppingcart/shoppingItemListView");
+    var ShoppingCartView = Backbone.Epoxy.View.extend({
         el:$("#shopping"),
-        viewName:'shoppingMallView',
+        viewName:'shoppingCartView',
         model:SkyModel.getModel("shoppingCartModel"),
         bindings:{
             "span#totalPrice":"text:totalPrice"
@@ -38,5 +38,5 @@ define("view/shoppingcart/shoppingMallView", function(require) {
             console.log(array);
         }
     });
-    return shoppingMallView;
+    return ShoppingCartView;
 });

@@ -26,6 +26,9 @@ app.get('/shoppingcart',function(req, res, next) {
 app.get('/ct',function(req, res, next) {
     res.render('ct', { title: 'Express' });
 });
+app.get('/settleAccount',function(req, res, next) {
+    res.render('settleaccount', { title: 'Express' });
+});
 
 app.get(    '/getNixle',      function(req,res,next){
     var data={

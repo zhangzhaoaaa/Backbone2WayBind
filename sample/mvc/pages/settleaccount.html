@@ -2,18 +2,18 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>购物车</title>
+    <title>结算</title>
     <link rel="stylesheet" href="resources/css/style.css"/>
 </head>
 <body>
         <div id="shopping">
-            <div class="header"><h3>购物车</h3></div>
+            <div class="header"><h3>结算</h3></div>
             <ul id="productList" data-bind="collection:$collection">
             </ul>
             <p><span>总计</span><span id="totalPrice"></span></p>
 
             <p>
-                <span><button id="settleAccount">去结算</button></span>
+                <span><button id="submitOrder">提交订单</button></span>
             </p>
         </div>
         <script src="resources/javascripts/jquery.js"></script>
@@ -31,9 +31,5 @@
             });
         </script>
         <script src="manage/ViewManage.js"></script>
-        <script src="view/shoppingcart/ShoppingCartView.js"></script>
-        <script src="view/shoppingcart/ShoppingItemListView.js"></script>
-        <script src="view/shoppingcart/ShoppingItemView.js"></script>
-        <script src="entry/shoppingcart/ShoppingInitView.js"></script>
 </body>
 </html>
