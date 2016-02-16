@@ -12,13 +12,27 @@ define("view/shoppingcart/shoppingItemsView", function(require) {
             var template = $.templates("#shoppingcartItemTmpl");
             var htmlOutput = template.render(this.model.toJSON({computed:true}));
             this.$el.html(htmlOutput);
-            //this.listenTo(this.model, 'destroy', this.remove);
         },
         events:{
-            "click .deleteItem":"eventDeleteItem"
+            "click .deleteItem":"eventDeleteItem",
+            'click .counter':"eventChangeCount"
         },
         eventDeleteItem:function(e){
-            SkyModel.getCollection("shoppingCartItemCollection").remove({id:1});
+            SkyModel.getCollection("shoppingCartItemCollection").remove({id:this.getCartItemId(e)});
+        },
+        eventChangeCount:function(e){
+            var target = e.target;
+            var quantity = 0;
+            var model = SkyModel.getCollection("shoppingCartItemCollection").get(this.getCartItemId(e));
+            if (target.id==='minus'){
+                quantity = model.get("quantity")-1;
+            }else{
+                quantity = model.get("quantity")+1;
+            }
+            model.set("quantity",quantity<0?0:quantity);
+        },
+        getCartItemId:function(e){
+            return $(e.target).parents('.cartItem').attr('mid');
         }
     });
     return ListItemView;

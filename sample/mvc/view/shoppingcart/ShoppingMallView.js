@@ -13,7 +13,7 @@ define("view/shoppingcart/shoppingMallView", function(require) {
         initialize:function(){
             SkyView.setView(null,this);
             SkyView.setView(this.cid,new ShoppingView());
-            this.listenTo(SkyModel.getCollection("shoppingCartItemCollection"),"change",this.listenShoppingCart);
+            this.listenTo(SkyModel.getCollection("shoppingCartItemCollection"),"change remove",this.listenShoppingCart);
         },
         events:{
             "click #settleAccount":"eventSettleAccount"

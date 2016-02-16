@@ -9,26 +9,7 @@ define("view/shoppingcart/shoppingView", function(require) {
         viewName:'shoppingView',
         itemView: ListItemView,
         initialize:function(){
-            //this.listenTo(this.collection, 'all', this.render);
             this.collection = SkyModel.getCollection("shoppingCartItemCollection");
-        },
-        /*render:function(){
-            $('#shopping').append(this.$el.html());
-        },*/
-        events:{
-            'click .counter':"eventChangeCount"
-        },
-        eventChangeCount:function(e){
-            var target = e.target;
-            var $target = $(target);
-            var quantity = 0;
-            var model = this.collection.get($target.attr('mid'));
-            if (target.id==='minus'){
-                quantity = model.get("quantity")-1;
-            }else{
-                quantity = model.get("quantity")+1;
-            }
-            model.set("quantity",quantity<0?0:quantity);
         }
     });
     return shoppingView;
