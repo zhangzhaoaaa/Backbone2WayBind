@@ -1,5 +1,8 @@
 /**
- * Created by mike on 16-2-14.
+ * A module representing a shoppingItemListView.
+ * @author zhangmike
+ * @date   16/2/14.
+ * @module view/shoppingcart/shoppingItemListView
  */
 define("view/shoppingcart/shoppingItemListView", function(require) {
     var itemView = require("view/shoppingcart/shoppingItemView");

@@ -5,7 +5,7 @@
  * @module view/shoppingcart/shoppingCartView
  */
 define("view/shoppingcart/shoppingCartView", function(require) {
-    var ShoppingView = require("view/shoppingcart/shoppingItemListView");
+    var ShoppingItemListView = require("view/shoppingcart/shoppingItemListView");
     var ShoppingCartView = Backbone.Epoxy.View.extend({
         el:$("#shopping"),
         viewName:'shoppingCartView',
@@ -13,20 +13,36 @@ define("view/shoppingcart/shoppingCartView", function(require) {
         bindings:{
             "span#totalPrice":"text:totalPrice"
         },
+        /**
+         * shoppingCartView的初始化
+         * @function initialize
+         * @author zhangmike
+         * @date   16/2/14.
+         * @description 将当前shoppingCartView设置到SkyView中;初始化ShoppingItemListView并设置到SkyView中;
+         * 当前view监听shoppingCartItemCollection对象的change和remove事件,回调方法listenShoppingCart
+         */
         initialize:function(){
             SkyView.setView(null,this);
-            SkyView.setView(this.cid,new ShoppingView());
+            SkyView.setView(this.cid,new ShoppingItemListView());
             this.listenTo(SkyModel.getCollection("shoppingCartItemCollection"),"change remove",this.listenShoppingCart);
         },
         events:{
             "click #settleAccount":"eventSettleAccount"
         },
+        /** 去结算
+         *  @function eventSettleAccount
+         *  @author zhangmike
+         *  @date   16/2/14.
+         *  @description 点击去结算触发此方法,会获取当前提交所需的json数据
+         */
         eventSettleAccount:function(){
             this.getJsonData();
         },
-        /** This is a description of the foo function.
-         *
-         * @param model
+        /** 监听shoppingCartItemCollection回调方法
+         *  @author zhangmike
+         *  @date   16/2/14.
+         *  @param  {Backbone.Model.Epoxy} model
+         *  @description 监听collection中的model的change和remove方法
          */
         listenShoppingCart:function(model){
             console.log(model);
@@ -37,6 +53,11 @@ define("view/shoppingcart/shoppingCartView", function(require) {
             });
             me.model.set("totalPrice",totalPrice.toFixed(2));
         },
+        /** 获取提交数据的json方法
+         *  @author zhangmike
+         *  @date   16/2/14.
+         *  @description 从shoppingCartItemCollection获取各个Model中的属性数据
+         */
         getJsonData:function(){
             var collections = SkyModel.getCollection("shoppingCartItemCollection").toJSON();
             var array = [];
