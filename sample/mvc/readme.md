@@ -12,3 +12,5 @@
 <p>监听方法以listen开头</p>
 * getJsonData
 <p>获取最后提交数据</p>
+###命令
+jsdoc sample/mvc/view/shoppingcart/*.js

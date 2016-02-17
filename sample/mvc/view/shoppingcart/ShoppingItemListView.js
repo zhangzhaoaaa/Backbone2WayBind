@@ -11,6 +11,13 @@ define("view/shoppingcart/shoppingItemListView", function(require) {
         el:'#productList',
         viewName:'shoppingItemListView',
         itemView: itemView,
+        /**
+         * shoppingItemListView的初始化
+         * @function initialize
+         * @author zhangmike
+         * @date   16/2/14.
+         * @description 将shoppingCartItemCollection数据设置到当前view的collection属性中
+         */
         initialize:function(){
             this.collection = SkyModel.getCollection("shoppingCartItemCollection");
         }
