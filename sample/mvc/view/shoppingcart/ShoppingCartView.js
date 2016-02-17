@@ -1,5 +1,8 @@
 /**
- * Created by zhangmike on 16/2/14.
+ * A module representing a shoppingCartView.
+ * @author zhangmike
+ * @date   16/2/14.
+ * @module view/shoppingcart/shoppingCartView
  */
 define("view/shoppingcart/shoppingCartView", function(require) {
     var ShoppingView = require("view/shoppingcart/shoppingItemListView");
@@ -21,7 +24,12 @@ define("view/shoppingcart/shoppingCartView", function(require) {
         eventSettleAccount:function(){
             this.getJsonData();
         },
+        /** This is a description of the foo function.
+         *
+         * @param model
+         */
         listenShoppingCart:function(model){
+            console.log(model);
             var me = this;
             var totalPrice = 0.0;
             model.collection.forEach(function(current,index,coll){
