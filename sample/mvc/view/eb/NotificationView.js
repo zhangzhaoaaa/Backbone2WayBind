@@ -1,5 +1,8 @@
 /**
- * Created by zhangmike on 16/1/20.
+ * A module representing a notificationView.
+ * @author zhangmike
+ * @date   16/2/14.
+ * @module view/eb/notificationView
  */
 define("view/eb/notificationView", function(require) {
     var MessView = require("view/eb/messageView");
