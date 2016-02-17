@@ -13,4 +13,6 @@
 * getJsonData
 <p>获取最后提交数据</p>
 ###命令
-jsdoc sample/mvc/view/shoppingcart/*.js
+<p>jsdoc sample/mvc/view/shoppingcart/*.js</p>
+<p>jsdoc -c ./node_modules/ink-docstrap/template/jsdoc.conf.json -t ./node_modules/ink-docstrap/template -R ./sample/mvc/readme.md -r ./sample/mvc/view
+</p>
