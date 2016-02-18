@@ -24,7 +24,7 @@
     });
 </script>
 <script>
-    var ListItemView = Backbone.View.extend({
+    /*var ListItemView = Backbone.View.extend({
         tagName: "li",
         initialize: function() {
             this.$el.text( this.model.get("label") );
@@ -47,7 +47,13 @@
         }
     });
 
-    var view = new ListView();
+    var view = new ListView();*/
+
+    //1.Events Test on/trigger
+    var obj = { counter: 0 };
+    _.extend(obj,Backbone.Events);
+    obj.on('event', function() { obj.counter += 1; });
+    obj.trigger('event');
 </script>
 </body>
 </html>
