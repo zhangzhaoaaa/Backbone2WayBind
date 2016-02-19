@@ -50,10 +50,128 @@
     var view = new ListView();*/
 
     //1.Events Test on/trigger
-    var obj = { counter: 0 };
+    /*var obj = { counter: 0 };
     _.extend(obj,Backbone.Events);
     obj.on('event', function() { obj.counter += 1; });
-    obj.trigger('event');
+    obj.trigger('event');*/
+
+    //2.binding and triggering multiple events
+    /*var obj = { counter: 0 };
+    _.extend(obj, Backbone.Events);
+    obj.on('a b c', function() { obj.counter += 1; });
+    obj.trigger('a');
+    obj.trigger('a b');
+    obj.trigger('c');
+    obj.off('a c');
+    obj.trigger('a b c');
+    console.log(obj.counter);*/
+    //3. binding and triggering with event maps
+   /* var obj = { counter: 0 };
+    _.extend(obj, Backbone.Events);
+
+    var increment = function() {
+        this.counter += 1;
+    };
+
+    obj.on({
+        a: increment,
+        b: increment,
+        c: increment
+    }, obj);
+
+    obj.trigger('a');
+
+    obj.trigger('a b');
+
+    obj.trigger('c');
+
+    obj.off({
+        a: increment,
+        c: increment
+    }, obj);
+    obj.trigger('a b c');
+    console.log(obj.counter);*/
+
+    //4.
+    /*var obj = { counter: 0 };
+    var context = {};
+    _.extend(obj, Backbone.Events);
+
+    obj.on({
+        a: function() {
+
+        }
+    }, context).trigger('a');
+
+    obj.off().on({
+        a: function() {
+
+        }
+    }, this, context).trigger('a');*/
+
+    //5.listenTo and stopListening
+    var a = _.extend({}, Backbone.Events);
+    var b = _.extend({}, Backbone.Events);
+    a.listenTo(b, 'all', function(info){ console.log(info,true); });
+    b.trigger('anything');
+    /*a.listenTo(b, 'all', function(){ console.log(false); });
+    a.stopListening();
+    b.trigger('anything');*/
+
+    //6.stopListening with omitted args
+    /*var a = _.extend({}, Backbone.Events);
+    var b = _.extend({}, Backbone.Events);
+    var cb = function () { console.log(true); };
+    a.listenTo(b, 'event', cb);
+    b.on('event', cb);
+    a.listenTo(b, 'event2', cb);
+    a.stopListening(null, {event: cb});
+    b.trigger('event event2');
+    b.off();
+    a.listenTo(b, 'event event2', cb);
+    a.stopListening(null, 'event');
+    a.stopListening();
+    b.trigger('event2');*/
+
+    //7.
+    /*var attr = 0, main = 0, error = 0;
+    var Model = Backbone.Model.extend({
+        validate: function (attr) {
+            if (attr.x > 1) {
+                error++;
+                return "this is an error";
+            }
+        }
+    });
+    var model = new Model({x:0});
+    model.on('change:x', function () { attr++; });
+    model.on('change', function () { main++; });
+    model.set({x:2}, {validate:true});
+    model.set({x:1}, {validate:true});
+    console.log(attr,main,error);*/
+
+    //8.
+    /*var i = 0;
+    var counter = function(){ i++; };
+    var model = new Backbone.Model({a: 1});
+    model.on("change:a", counter);
+    model.set({a: 2});
+    model.unset('a');
+    model.unset('a');*/
+
+    //9.
+    new Backbone.Model()
+            .on('change:state', function(model, newState) {
+                console.log(model.previous('state'));
+                console.log(newState);
+                // Fire a nested change event.
+                model.set({other: 'whatever'});
+            })
+            .on('change:state', function(model, newState) {
+                console.log(model.previous('state'));
+                console.log(newState);
+            })
+            .set({state: 'hello'});
 </script>
 </body>
 </html>
