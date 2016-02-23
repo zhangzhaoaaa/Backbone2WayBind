@@ -36,7 +36,7 @@ define("view/shoppingcart/shoppingItemView", function(require) {
          * @description 将当前选中的商品从shoppingCartItemCollection删去
          */
         eventDeleteItem:function(e){
-            SkyModel.query("getCollection","shoppingCartItemCollection").remove({id:this.getCartItemId(e)});
+            SkyModel.execute("getCollection","shoppingCartItemCollection").remove({id:this.getCartItemId(e)});
         },
         /**
          * 改变一个商品的数量
@@ -49,7 +49,7 @@ define("view/shoppingcart/shoppingItemView", function(require) {
         eventChangeCount:function(e){
             var target = e.target;
             var quantity = 0;
-            var model = SkyModel.query("getCollection","shoppingCartItemCollection").get(this.getCartItemId(e));
+            var model = SkyModel.execute("getCollection","shoppingCartItemCollection").get(this.getCartItemId(e));
             if (target.id==='minus'){
                 quantity = model.get("quantity")-1;
             }else{

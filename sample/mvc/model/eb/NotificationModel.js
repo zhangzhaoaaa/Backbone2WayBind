@@ -24,7 +24,6 @@ define("model/eb/NotificationModel", function(require) {
             }
         },
         parse:function(data){
-
         }
     });
     return NotificationModel;

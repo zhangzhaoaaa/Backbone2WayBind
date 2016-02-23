@@ -10,7 +10,7 @@ define("view/shoppingInitView", function(require) {
     var ShoppingInitView = {
         initializeData:function(data){
             SkyModel.execute("createModel",data,ShoppingCartModel,{parse:true});
-            var shoppingCartModel = SkyModel.query("getModel","shoppingCartModel");
+            var shoppingCartModel = SkyModel.execute("getModel","shoppingCartModel");
             SkyModel.execute("createCollection",shoppingCartModel.get("items"),ShoppingCartItemCollection);
         },
         getInstance:function(data){

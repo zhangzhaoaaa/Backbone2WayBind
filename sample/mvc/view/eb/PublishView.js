@@ -16,7 +16,7 @@ define("view/eb/publishView", function(require) {
             IPAWS:'ipaws',
             NETWORK:'network'
         },
-        model:SkyModel.createModel(SkyModel.getModel("notificationModel").get("publish"),PublishModel),
+        model:SkyModel.execute("createModel",SkyModel.execute("getModel","notificationModel").get("publish"),PublishModel),
         bindingHandlers: {
             listing: function( $element, value ) {
                 $element.text( value.join(", ") );
@@ -33,7 +33,7 @@ define("view/eb/publishView", function(require) {
         },
         bindingSources: {
             nixleInfo: function() {
-                return SkyModel.getModel("nixleModel");
+                return SkyModel.execute("getModel","nixleModel");
             }
         },
         events:{
@@ -62,7 +62,7 @@ define("view/eb/publishView", function(require) {
             var template = $.templates("#publishTmpl");
             var htmlOutput = template.render(this.model.toJSON({computed:true}));
             this.$el.html(htmlOutput);
-            this.listenTo(SkyModel.getModel("nixle"),"change",this.listenNixle);
+            this.listenTo(SkyModel.execute("getModel","nixleModel"),"change",this.listenNixle);
         },
         listenNixle:function(model){
             console.log(model.toJSON());

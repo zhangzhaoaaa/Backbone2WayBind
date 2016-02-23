@@ -5,7 +5,7 @@ define("view/notificationInitView", function(require) {
     var NotificationModel = require("model/eb/NotificationModel");
     var NotificationInitView = {
         initializeData:function(data){
-            SkyModel.createModel(data,NotificationModel,{parse:true});
+            SkyModel.execute("createModel",data,NotificationModel,{parse:true});
         },
         getInstance:function(data){
             var data = {
@@ -22,11 +22,12 @@ define("view/notificationInitView", function(require) {
                     nixle:{
                         nixleId:'nixl_12345',
                         nixleTitle:'nixl_title',
-                        nixleSms:'This is nixle sms'
+                        nixleSms:'This is nixle sms',
+                        nixleMessage:'aa'
                     }
                 }
             };
-            this.initializeData(null);
+            this.initializeData(data);
             seajs.use("view/eb/notificationView",function(NotiView){
                 new NotiView();
             });
