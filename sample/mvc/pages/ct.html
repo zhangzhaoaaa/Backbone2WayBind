@@ -110,10 +110,10 @@
     }, this, context).trigger('a');*/
 
     //5.listenTo and stopListening
-    var a = _.extend({}, Backbone.Events);
+    /*var a = _.extend({}, Backbone.Events);
     var b = _.extend({}, Backbone.Events);
     a.listenTo(b, 'all', function(info){ console.log(info,true); });
-    b.trigger('anything');
+    b.trigger('anything');*/
     /*a.listenTo(b, 'all', function(){ console.log(false); });
     a.stopListening();
     b.trigger('anything');*/
@@ -160,7 +160,7 @@
     model.unset('a');*/
 
     //9.
-    new Backbone.Model()
+   /* new Backbone.Model()
             .on('change:state', function(model, newState) {
                 console.log(model.previous('state'));
                 console.log(newState);
@@ -171,7 +171,51 @@
                 console.log(model.previous('state'));
                 console.log(newState);
             })
-            .set({state: 'hello'});
+            .set({state: 'hello'});*/
+    //10.
+    /*var obj = { counterA: 0, counterB: 0 };
+    _.extend(obj, Backbone.Events);
+    var incrA = function(){ obj.counterA += 1; obj.trigger('event'); };
+    var incrB = function(){ obj.counterB += 1; };
+    obj.once('event', incrA);
+    obj.once('event', incrB);
+    obj.trigger('event');
+    console.log(obj.counterA,obj.counterB);*/
+
+    //11.
+    /*var model = new Backbone.Model();
+    var o1 = {};
+    var o2 = {};
+    var o3 = {};
+    model.on('change', function(__, options) {
+        switch (model.get('a')) {
+            case 1:
+                console.log(options, o1);
+                return model.set('a', 2, o2);
+            case 2:
+                console.log(options, o2);
+                return model.set('a', 3, o3);
+            case 3:
+                console.log(options, o3);
+        }
+    });
+    model.set('a', 1, o1);*/
+
+    //12.
+    var lastError, model = new Backbone.Model();
+    model.validate = function(attrs) {
+        if (attrs.admin) return "Can't change admin status.";
+    };
+    model.sync = function(method, model, options) {
+        options.success.call(this, {admin: true});
+    };
+    model.on('invalid', function(model, error) {
+        lastError = error;
+    });
+    model.save(null);
+
+    console.log(lastError, "Can't change admin status.");
+    console.log(model.validationError, "Can't change admin status.");
 </script>
 </body>
 </html>

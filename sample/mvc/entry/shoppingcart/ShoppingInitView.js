@@ -9,8 +9,9 @@ define("view/shoppingInitView", function(require) {
     var ShoppingCartItemCollection = require("model/shoppingcart/ShoppingCartItemCollection");
     var ShoppingInitView = {
         initializeData:function(data){
-            SkyModel.createModel(data,ShoppingCartModel,{parse:true});
-            SkyModel.createCollection(SkyModel.getModel("shoppingCartModel").get("items"),ShoppingCartItemCollection);
+            SkyModel.execute("createModel",data,ShoppingCartModel,{parse:true});
+            var shoppingCartModel = SkyModel.query("getModel","shoppingCartModel");
+            SkyModel.execute("createCollection",shoppingCartModel.get("items"),ShoppingCartItemCollection);
         },
         getInstance:function(data){
             var data = {

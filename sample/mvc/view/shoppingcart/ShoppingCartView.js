@@ -9,7 +9,7 @@ define("view/shoppingcart/shoppingCartView", function(require) {
     var ShoppingCartView = Backbone.Epoxy.View.extend({
         el:$("#shopping"),
         viewName:'shoppingCartView',
-        model:SkyModel.getModel("shoppingCartModel"),
+        model:SkyModel.query("getModel","shoppingCartModel"),
         bindings:{
             "span#totalPrice":"text:totalPrice"
         },
@@ -24,7 +24,7 @@ define("view/shoppingcart/shoppingCartView", function(require) {
         initialize:function(){
             SkyView.setView(null,this);
             SkyView.setView(this.cid,new ShoppingItemListView());
-            this.listenTo(SkyModel.getCollection("shoppingCartItemCollection"),"change remove",this.listenShoppingCart);
+            this.listenTo(SkyModel.query("getCollection","shoppingCartItemCollection"),"change remove",this.listenShoppingCart);
         },
         events:{
             "click #settleAccount":"eventSettleAccount"
@@ -59,7 +59,7 @@ define("view/shoppingcart/shoppingCartView", function(require) {
          *  @description 从shoppingCartItemCollection获取各个Model中的属性数据
          */
         getJsonData:function(){
-            var collections = SkyModel.getCollection("shoppingCartItemCollection").toJSON();
+            var collections = SkyModel.query("getCollection","shoppingCartItemCollection").toJSON();
             var array = [];
             collections.forEach(function(current,index,col){
                 array.push(_.pick(current,'id','quantity'));

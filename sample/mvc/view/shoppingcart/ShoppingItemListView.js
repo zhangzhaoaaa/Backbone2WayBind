@@ -19,7 +19,7 @@ define("view/shoppingcart/shoppingItemListView", function(require) {
          * @description 将shoppingCartItemCollection数据设置到当前view的collection属性中
          */
         initialize:function(){
-            this.collection = SkyModel.getCollection("shoppingCartItemCollection");
+            this.collection = SkyModel.query("getCollection","shoppingCartItemCollection");
         }
     });
     return shoppingView;
